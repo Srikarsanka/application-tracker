@@ -1,0 +1,26 @@
+pipeline:
+  id: pipeline_Srikarsanka_application_tracker_build_67bd
+  name: pipeline_Srikarsanka_application_tracker_build_67bd
+  stages:
+    - id: build
+      name: Build
+      runtime: cloud
+      platform:
+        os: linux
+        arch: amd64
+      clone:
+        enabled: true
+      cache:
+        enabled: true
+      steps:
+        - id: install_dependencies
+          name: Install Dependencies
+          run:
+            shell: bash
+            script: |-
+              node --version
+              npm --version
+              npm ci
+          timeout: 10m
+  tags:
+    onboarding: "true"
